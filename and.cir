@@ -1,0 +1,57 @@
+.include TSMC_180nm.txt
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_N={10LAMBDA}
+.param width_P={2.5width_N}
+
+vdd 1 0 dc 1.8
+
+va 2 0 pulse (0 1.8 0 0.1p 0.1p 10n 20n)
+vb 4 0 pulse (0 1.8 0 0.1p 0.1p 20n 40n)
+
+MN0 3 2 5 0 CMOSN W={width_N} L={LAMBDA}
+
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA + 2*width_N}
++ AD={5*width_N*LAMBDA} PD={10*LAMBDA + 2*width_N}
+
+MN1 5 4 0 0 CMOSN W={width_N} L={LAMBDA}
+
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA + 2*width_N}
++ AD={5*width_N*LAMBDA} PD={10*LAMBDA + 2*width_N}
+
+MN2 6 3 0 0 CMOSN W={width_N} L={LAMBDA}
+
++ AS={5*width_N*LAMBDA} PS={10*LAMBDA + 2*width_N}
++ AD={5*width_N*LAMBDA} PD={10*LAMBDA + 2*width_N}
+
+MP0 3 2 1 1 CMOSP W={width_P} L={LAMBDA}
+
++ AS={5width_PLAMBDA} PS={10LAMBDA + 2width_P}
++ AD={5width_PLAMBDA} PD={10LAMBDA + 2width_P}
+
+MP1 3 4 1 1 CMOSP W={width_P} L={LAMBDA}
+
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA + 2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA + 2*width_P}
+
+MP2 6 3 1 1 CMOSP W = {width_P} L={LAMBDA} 
+
++ AS={5*width_P*LAMBDA} PS={10*LAMBDA + 2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA + 2*width_P}
+
+Cout 6 0 100f
+
+.tran 0.1n 100n
+
+.measure tran trise TRIG v(2) VAL='SUPPLY/2' RISE =3  TARG v(6) VAL = 'SUPPLY/2' RISE =2
+
+.control
+run
+
+plot v(2) v(4)+2 v(6)+4
+
+
+
+.endc
+
+
+
+.end
