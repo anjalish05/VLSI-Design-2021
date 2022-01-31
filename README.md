@@ -4,4 +4,4 @@ VLSI Design Assignment given during the course, where we were supposed to make A
 
 # VLSI-Design-Project-2021
 
-Project included to make a 4-bit carry look ahead (CLA) adder by building generate and propagate blocks. This included combining the AND, OR, NOT and XOR gates previously made in the assignment, to form a well-formed adder. 
+Project required us to make a 4-bit carry look ahead (CLA) adder by building generate, propagate, carry and sum blocks, individually. This included combining the AND, OR, NOT and XOR gates previously made in the assignment, to form a well-formed adder. 
