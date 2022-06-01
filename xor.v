@@ -50,5 +50,3 @@ plot v(7)+4 v(4)+2 v(2)
 
 .endc
 .end
-
-
