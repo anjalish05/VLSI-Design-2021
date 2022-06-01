@@ -41,4 +41,3 @@ plot v(6)+4 v(2)+2 v(4)
 
 .endc
 .end
-
